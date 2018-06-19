@@ -1,10 +1,13 @@
-=================================================================
-==5550==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6280000083a5 at pc 0x55f74604a211 bp 0x7ffc463edf90 sp 0x7ffc463edf80
+Steps to reproduce:
+
+$cjpeg -rgb1 heap-buffer-overflow
+
+==5689==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6280000083a5 at pc 0x55ff47a71211 bp 0x7fff0f518870 sp 0x7fff0f518860
 READ of size 1 at 0x6280000083a5 thread T0
-    #0 0x55f74604a210 in get_text_rgb_row /home/fuzzbox/Desktop/libjpeg/rdppm.c:173
-    #1 0x55f746049984 in main /home/fuzzbox/Desktop/libjpeg/cjpeg.c:642
-    #2 0x7f56badaeb96 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21b96)
-    #3 0x55f746047069 in _start (/usr/local/bin/cjpeg+0x8069)
+    #0 0x55ff47a71210 in get_text_rgb_row /home/fuzzbox/Desktop/libjpeg/rdppm.c:173
+    #1 0x55ff47a70984 in main /home/fuzzbox/Desktop/libjpeg/cjpeg.c:642
+    #2 0x7f198e406b96 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21b96)
+    #3 0x55ff47a6e069 in _start (/usr/local/bin/cjpeg+0x8069)
 
 Address 0x6280000083a5 is a wild pointer.
 SUMMARY: AddressSanitizer: heap-buffer-overflow /home/fuzzbox/Desktop/libjpeg/rdppm.c:173 in get_text_rgb_row
@@ -39,4 +42,5 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
   ASan internal:           fe
   Left alloca redzone:     ca
   Right alloca redzone:    cb
-==5550==ABORTING
+==5689==ABORTING
+
